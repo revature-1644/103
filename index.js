@@ -25,7 +25,21 @@ async function loadContent(){
         pokemonArray.push(body.results[i]);
     }
     console.log(pokemonArray);
+    addEveryPokemon();
+}
+function addEveryPokemon(){
+    for(let i = 0; i < pokemonArray.length; i++){
+        // create an element and append it to the site
+        let pokemonTitle = document.createElement("h3");
+        pokemonTitle.innerText = pokemonArray[i].name;
+        // a tags are links
+        let pokemonUrl = document.createElement("a");
+        pokemonUrl.innerText = pokemonArray[i].url;
+        pokemonUrl.href = pokemonArray[i].url;
 
+        content.appendChild(pokemonTitle);
+        content.appendChild(pokemonUrl);
+    }
 }
 
 // CORS is a security protocol that prevents an API from responding to a site that it doesn't intend to.
